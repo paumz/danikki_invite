@@ -27,7 +27,13 @@ const informacion = {
 };
 
 const parametros = new URLSearchParams(window.location.search);
+const nombre = parametros.get("nombre");
 const numeroInvitados = parametros.get("inv") || "1";
+
+const saludo = document.getElementById("saludo");
+if (nombre) {
+    saludo.textContent = `${nombre}:`;
+}
 
 botones.forEach((boton) => {
     boton.addEventListener("click", () => {
