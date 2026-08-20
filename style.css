@@ -88,6 +88,30 @@ button {
     }
 }
 
+/* Líneas laterales decorativas */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+    background: rgba(245, 240, 232, 0.35);
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+body::before {
+    left: 24px;
+}
+
+body::after {
+    right: 24px;
+}
+
 /*Arboles*/
 
 .fondo-arboles {
