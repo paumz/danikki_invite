@@ -88,47 +88,27 @@ button {
     }
 }
 
-.borde-pagina {
+/*CSS PARA BORDERS*/
+/* Líneas laterales decorativas */
+body::before,
+body::after {
+    content: "";
     position: fixed;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
 
-    border: 2px solid #f5f0e8;
-    z-index: 999;
-    pointer-events: none;
-}
+    top: 0;
+    bottom: 0;
 
-.marco {
-    position: fixed;
-    z-index: 1000;
-
-    color: #f5f0e8;
-    font-size: 40px;
+    width: 1px;
+    background: rgba(245, 240, 232, 0.35);
 
     pointer-events: none;
+    z-index: 10;
 }
 
-.marco-superior-izquierdo {
-    top: 8px;
-    left: 8px;
+body::before {
+    left: 24px;
 }
 
-.marco-superior-derecho {
-    top: 8px;
-    right: 8px;
-    transform: rotate(90deg);
-}
-
-.marco-inferior-izquierdo {
-    bottom: 8px;
-    left: 8px;
-    transform: rotate(-90deg);
-}
-
-.marco-inferior-derecho {
-    bottom: 8px;
-    right: 8px;
-    transform: rotate(180deg);
+body::after {
+    right: 24px;
 }
