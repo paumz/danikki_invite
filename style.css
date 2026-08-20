@@ -88,7 +88,7 @@ button {
     }
 }
 
-/* Líneas laterales decorativas */
+/* bordes de los lados */
 body::before,
 body::after {
     content: "";
@@ -134,7 +134,7 @@ main {
     z-index: 1;
 }
 
-/* Panel desplegable de información */
+/* paneles de los botonessss */
 
 .info-panel {
     display: none;
