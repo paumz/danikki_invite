@@ -18,6 +18,11 @@ const informacion = {
     dresscode: {
         titulo: "DRESSCODE",
         texto: "Una noche, un color; negro."
+    },
+
+    invitados:{
+        titulo: "RESERVADO PARA",
+        texto: "personas."
     }
 };
 
@@ -43,11 +48,35 @@ botones.forEach((boton) => {
         boton.classList.add("activo");
 
         // Cambiamos el contenido
+        /*
         titulo.textContent = informacion[id].titulo;
         texto.innerHTML = informacion[id].texto;
+        */
+        titulo.textContent = informacion[id].titulo;
+
+        if (id === "inv") {
+        
+            if (numeroInvitados === "1") {
+                texto.innerHTML = `
+                    Esta invitación está reservada para<br>
+                    <strong>1 PERSONA</strong>
+                `;
+            } else {
+                texto.innerHTML = `
+                    Esta invitación está reservada para<br>
+                    <strong>${numeroInvitados} PERSONAS</strong>
+                `;
+            }
+        
+        } else {
+            texto.innerHTML = informacion[id].texto;
+        }
 
         // Mostramos el panel
         panel.classList.add("activo");
 
     });
 });
+
+const parametros = new URLSearchParams(window.location.search);
+const numeroInvitados = parametros.get("inv") || "1";
