@@ -29,10 +29,16 @@ const informacion = {
 const parametros = new URLSearchParams(window.location.search);
 const nombre = parametros.get("nombre");
 const numeroInvitados = parametros.get("inv") || "1";
+const acompanamiento = document.getElementById("acomp");
 
 const saludo = document.getElementById("saludo");
 if (nombre) {
     saludo.textContent = `${nombre}:`;
+}
+if (Number(numeroInvitados) > 1) {
+    acompanamiento.textContent = "con ustedes";
+} else {
+    acompanamiento.textContent = "contigo";
 }
 
 botones.forEach((boton) => {
