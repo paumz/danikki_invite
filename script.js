@@ -93,3 +93,14 @@ botones.forEach((boton) => {
     });
 });
 
+const botonConfirmar = document.getElementById("confirmar-btn");
+
+if (botonConfirmar) {
+    botonConfirmar.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const parametros = new URLSearchParams(window.location.search);
+
+        window.location.href = `confirmar.html?${parametros.toString()}`;
+    });
+}
