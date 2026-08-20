@@ -133,3 +133,76 @@ main {
     position: relative;
     z-index: 1;
 }
+
+/* Panel desplegable de información */
+
+.info-panel {
+    display: none;
+
+    position: relative;
+
+    max-width: 560px;
+    margin: 20px auto 0;
+    padding: 18px 50px;
+
+    border: 1px solid rgba(17, 17, 17, 0.25);
+
+    background: rgba(245, 240, 232, 0.75);
+
+    box-shadow: 0 12px 30px rgba(17, 17, 17, 0.12);
+}
+
+.info-panel.activo {
+    display: block;
+
+    animation: aparecer 0.35s ease;
+}
+
+.info-panel h2 {
+    margin: 0 0 10px;
+
+    font-size: 26px;
+    letter-spacing: 4px;
+}
+
+.info-panel p {
+    margin: 0;
+
+    font-size: 24px;
+    font-style: normal;
+}
+
+.detalle {
+    position: absolute;
+
+    font-size: 14px;
+}
+
+.detalle-superior {
+    top: 10px;
+    left: 12px;
+}
+
+.detalle-inferior {
+    right: 12px;
+    bottom: 10px;
+}
+
+.opcion.activo {
+    background: #111;
+    color: #f5f0e8;
+
+    box-shadow: 0 8px 20px rgba(17, 17, 17, 0.18);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
