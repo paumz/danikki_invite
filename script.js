@@ -22,9 +22,12 @@ const informacion = {
 
     invitados:{
         titulo: "RESERVADO PARA",
-        texto: "personas."
+        texto: ""
     }
 };
+
+const parametros = new URLSearchParams(window.location.search);
+const numeroInvitados = parametros.get("inv") || "1";
 
 botones.forEach((boton) => {
     boton.addEventListener("click", () => {
@@ -54,7 +57,7 @@ botones.forEach((boton) => {
         */
         titulo.textContent = informacion[id].titulo;
 
-        if (id === "inv") {
+        if (id === "invitados") {
         
             if (numeroInvitados === "1") {
                 texto.innerHTML = `
@@ -78,5 +81,3 @@ botones.forEach((boton) => {
     });
 });
 
-const parametros = new URLSearchParams(window.location.search);
-const numeroInvitados = parametros.get("inv") || "1";
