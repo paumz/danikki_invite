@@ -32,3 +32,43 @@ button {
 
     cursor: pointer;
 }
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-width: 150px;
+    padding: 18px 28px;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.opcion svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+}
+
+@media (max-width: 600px) {
+    .opciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .opcion {
+        width: 100%;
+        max-width: 280px;
+    }
+}
