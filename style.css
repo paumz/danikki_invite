@@ -88,31 +88,47 @@ button {
     }
 }
 
-body::before {
-    content: "";
+.borde-pagina {
     position: fixed;
-
     top: 20px;
     left: 20px;
     right: 20px;
     bottom: 20px;
 
-    border: 1px solid rgba(245, 240, 232, 0.35);
+    border: 2px solid #f5f0e8;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.marco {
+    position: fixed;
+    z-index: 1000;
+
+    color: #f5f0e8;
+    font-size: 40px;
 
     pointer-events: none;
 }
 
-body::after {
-    content: "✦";
-    position: fixed;
+.marco-superior-izquierdo {
+    top: 8px;
+    left: 8px;
+}
 
-    top: 10px;
-    left: 50%;
+.marco-superior-derecho {
+    top: 8px;
+    right: 8px;
+    transform: rotate(90deg);
+}
 
-    transform: translateX(-50%);
+.marco-inferior-izquierdo {
+    bottom: 8px;
+    left: 8px;
+    transform: rotate(-90deg);
+}
 
-    color: #f5f0e8;
-    font-size: 20px;
-
-    pointer-events: none;
+.marco-inferior-derecho {
+    bottom: 8px;
+    right: 8px;
+    transform: rotate(180deg);
 }
