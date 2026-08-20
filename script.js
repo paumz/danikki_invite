@@ -21,7 +21,7 @@ const informacion = {
     },
 
     invitados:{
-        titulo: "RESERVADO PARA",
+        titulo: "",
         texto: ""
     }
 };
