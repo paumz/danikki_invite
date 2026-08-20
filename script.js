@@ -46,7 +46,7 @@ botones.forEach((boton) => {
 
         const id = boton.id;
 
-        // Si el mismo botón ya estaba abierto, cerramos el panel
+        // abre y cierra el papoi
         if (boton.classList.contains("activo")) {
             boton.classList.remove("activo");
             panel.classList.remove("activo");
@@ -54,15 +54,15 @@ botones.forEach((boton) => {
             return;
         }
 
-        // Quitamos el estado activo de los demás botones
+        // adios activo
         botones.forEach((b) => {
             b.classList.remove("activo");
         });
 
-        // Activamos el botón seleccionado
+        // activa el clic
         boton.classList.add("activo");
 
-        // Cambiamos el contenido
+        // cambiando el contenidoooo
         /*
         titulo.textContent = informacion[id].titulo;
         texto.innerHTML = informacion[id].texto;
@@ -87,7 +87,7 @@ botones.forEach((boton) => {
             texto.innerHTML = informacion[id].texto;
         }
 
-        // Mostramos el panel
+        // muestra panel
         panel.classList.add("activo");
 
     });
