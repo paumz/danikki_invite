@@ -257,3 +257,30 @@ main {
     background: #111;
     color: #f5f0e8;
 }
+
+.confirmar-btn {
+    display: inline-block;
+
+    margin-top: 28px;
+    padding: 14px 30px;
+
+    background: #111;
+    color: #f5f0e8;
+
+    border: 1px solid #111;
+
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.confirmar-btn:hover {
+    background: transparent;
+    color: #111;
+}
