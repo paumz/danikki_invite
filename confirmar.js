@@ -31,10 +31,86 @@ if (invitados === 1) {
 
 
 /* buttonssss */
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxgmkLPfpn2eejU5JMiitdyNBxiqfmUv23Swn0L6ucEDuYjWF5tTlk3i-er7F1NFAn94g/exec";
+function registrarRespuesta(respuesta) {
+    const datos = {
+        nombre: nombre || "Invitado sin nombre",
+        invitados: invitados,
+        respuesta: respuesta
+    };
+
+    fetch(URL_SCRIPT, {
+        method: "POST",
+        body: JSON.stringify(datos)
+    })
+    .then(() => {
+
+        console.log("Respuesta registrada");
+
+        mostrarConfirmacion(respuesta);
+
+    })
+    .catch((error) => {
+
+        console.error("Error:", error);
+
+        alert("Hubo un problema al registrar tu respuesta.");
+    });
+}
+
+
 document.getElementById("confirmar-si").addEventListener("click", () => {
-    console.log("Asistencia confirmada");
+    registrarRespuesta("Sí");
 });
 
+
 document.getElementById("confirmar-no").addEventListener("click", () => {
-    console.log("Asistencia rechazada");
+    registrarRespuesta("No");
 });
+
+//mostrat
+function mostrarConfirmacion(respuesta) {
+
+    const main = document.querySelector("main");
+
+    if (respuesta === "Sí") {
+
+        main.innerHTML = `
+            <h1>PAU & DAN</h1>
+
+            <p class="subtitulo">
+                ASISTENCIA CONFIRMADA
+            </p>
+
+            <div class="separador">✦</div>
+
+            <p class="saludo-confirmacion">
+                Nos encantará celebrar contigo.
+            </p>
+
+            <p>
+                Gracias por formar parte de este capítulo de nuestra historia.
+            </p>
+        `;
+
+    } else {
+
+        main.innerHTML = `
+            <h1>PAU & DAN</h1>
+
+            <p class="subtitulo">
+                RESPUESTA RECIBIDA
+            </p>
+
+            <div class="separador">✦</div>
+
+            <p class="saludo-confirmacion">
+                Te extrañaremos esa noche.
+            </p>
+
+            <p>
+                Gracias por acompañarnos, aunque sea desde la distancia.
+            </p>
+        `;
+    }
+}
