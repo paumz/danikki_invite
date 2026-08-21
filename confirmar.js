@@ -32,7 +32,7 @@ if (invitados === 1) {
 
 
 /* buttonssss */
-const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxgmkLPfpn2eejU5JMiitdyNBxiqfmUv23Swn0L6ucEDuYjWF5tTlk3i-er7F1NFAn94g/exec";
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbx-e7rL_SKOaAWkc36pPqx7-tipT_CurY7Gd-UTrNmu0RbHeUHTvkMiNd0xlAJ3Oec2Vg/exec";
 function registrarRespuesta(respuesta) {
     const datos = {
         id: id,
