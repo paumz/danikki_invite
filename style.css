@@ -80,6 +80,13 @@ button {
     font-size: 15px; 
 }
 
+.unifrakturcook-bold {
+  font-family: "UnifrakturCook", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
 @media (max-width: 600px) {
     .opciones {
         flex-direction: column;
