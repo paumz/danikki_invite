@@ -76,6 +76,10 @@ button {
     stroke-width: 1.5;
 }
 
+.textosauceda{
+    font-size: 15px; 
+}
+
 @media (max-width: 600px) {
     .opciones {
         flex-direction: column;
