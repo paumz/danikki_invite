@@ -1,5 +1,6 @@
 const parametros = new URLSearchParams(window.location.search);
 
+const id = parametros.get("id");
 const nombre = parametros.get("nombre");
 const invitados = Number(parametros.get("inv")) || 1;
 
@@ -34,6 +35,7 @@ if (invitados === 1) {
 const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxgmkLPfpn2eejU5JMiitdyNBxiqfmUv23Swn0L6ucEDuYjWF5tTlk3i-er7F1NFAn94g/exec";
 function registrarRespuesta(respuesta) {
     const datos = {
+        id: id,
         nombre: nombre || "Invitado sin nombre",
         invitados: invitados,
         respuesta: respuesta
