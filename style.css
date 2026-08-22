@@ -295,3 +295,60 @@ main {
     background: transparent;
     color: #111;
 }
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+
+    margin: 30px 0;
+
+    font-family: 'Cinzel', serif;
+}
+
+.tiempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 55px;
+}
+
+.tiempo span {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.tiempo small {
+    margin-top: 5px;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.separador-countdown {
+    font-size: 22px;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .tiempo {
+        min-width: 45px;
+    }
+
+    .tiempo span {
+        font-size: 22px;
+    }
+
+    .tiempo small {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+}
