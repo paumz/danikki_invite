@@ -388,6 +388,10 @@ main {
     flex-shrink: 0;
 
     transition: transform 0.3s ease;
+
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
 }
 
 /* Pausita */
