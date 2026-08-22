@@ -27,7 +27,7 @@ if (invitados === 1) {
         Hemos reservado <strong>${invitados} lugares</strong> para ustedes.
     `;
     pregunta.textContent =
-        "¿Tendremos el placer de contar con ustedes?";
+        "¿Tendremos el placer de contar con su presencia?";
 }
 
 
@@ -36,7 +36,7 @@ const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxdtlqF3OGMObzldKrhW
 function registrarRespuesta(respuesta) {
     const datos = {
         id: id,
-        nombre: nombre || "Invitado sin nombre",
+        nombre: nombre || "Querido invitado",
         invitados: invitados,
         respuesta: respuesta
     };
