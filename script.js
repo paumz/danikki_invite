@@ -157,3 +157,8 @@ if (botonConfirmar) {
     });
 }
 
+document.querySelectorAll(".marquesina img").forEach((imagen) => {
+    imagen.addEventListener("dragstart", (event) => {
+        event.preventDefault();
+    });
+});
