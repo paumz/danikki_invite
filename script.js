@@ -162,3 +162,17 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
         event.preventDefault();
     });
 });
+
+document.querySelectorAll(".marquesina img").forEach((imagen) => {
+    imagen.addEventListener("click", (event) => {
+        event.preventDefault();
+    });
+
+    imagen.addEventListener("dragstart", (event) => {
+        event.preventDefault();
+    });
+
+    imagen.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+    });
+});
