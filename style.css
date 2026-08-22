@@ -137,11 +137,11 @@ body::after {
     inset: 0;
 
     background-image: url("skulls.png");
-    background-size: cover;
+    background-size: 550px;
     background-position: center;
     background-repeat: no-repeat;
 
-    opacity: 0.06;
+    opacity: 0.08;
 
     pointer-events: none;
     z-index: 0;
