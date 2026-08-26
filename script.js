@@ -150,26 +150,22 @@ function actualizarCuentaRegresiva() {
 }
 
 actualizarCuentaRegresiva();
-
 setInterval(actualizarCuentaRegresiva, 1000);
 
-/*Confirmación de asistencia DELETED*/
-/*
+/* CONFIRMAR ASISTENCIA
+   Conserva los parámetros al pasar a confirmar.html */
+
 const botonConfirmar = document.getElementById("confirmar-btn");
+
 if (botonConfirmar) {
-    botonConfirmar.addEventListener("click", function(event) {
-        event.preventDefault();
-        //const parametros = new URLSearchParams(window.location.search);
-        window.location.href = `confirmar.html?${parametros.toString()}`;
-    });
+    botonConfirmar.href = `confirmar.html${window.location.search}`;
 }
-*/
+
+
+/* BLOQUEAR ARRASTRE, CLICK Y MENÚ EN FOTOS */
+
 document.querySelectorAll(".marquesina img").forEach((imagen) => {
-    imagen.addEventListener("dragstart", (event) => {
-        event.preventDefault();
-    });
-});
-document.querySelectorAll(".marquesina img").forEach((imagen) => {
+
     imagen.addEventListener("click", (event) => {
         event.preventDefault();
     });
@@ -181,36 +177,5 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
     imagen.addEventListener("contextmenu", (event) => {
         event.preventDefault();
     });
+
 });
-
-//regresar DELETED
-/*
-const botonVolver = document.getElementById("volver-inicio");
-if (botonVolver) {
-    botonVolver.addEventListener("click", function(event) {
-        event.preventDefault();
-        //const parametros = new URLSearchParams(window.location.search);
-        //const query = parametros.toString();
-        const query = window.location.search;
-        /*window.location.href = query
-            ? `index.html?${query}`
-            : "index.html";*/
-        window.location.href = `index.html${query}`;
-    });
-}
-*/
-
-/* Mantener parámetros entre páginas */
-
-const parametrosActuales = window.location.search;
-const botonConfirmar = document.getElementById("confirmar-btn");
-
-if (botonConfirmar && parametrosActuales) {
-    botonConfirmar.href = `confirmar.html${parametrosActuales}`;
-}
-
-const botonVolver = document.getElementById("volver-inicio");
-
-if (botonVolver && parametrosActuales) {
-    botonVolver.href = `index.html${parametrosActuales}`;
-}
