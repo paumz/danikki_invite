@@ -203,20 +203,26 @@ function actualizarBotonMusica() {
     }
 }
 
+/* ABRIR INVITACIÓN */
 
-/* Intentar reproducir automáticamente */
+const pantallaInicial = document.getElementById("pantalla-inicial");
+const botonAbrir = document.getElementById("abrir-invitacion");
 
-musica.play()
-    .then(() => {
+if (botonAbrir) {
+    botonAbrir.addEventListener("click", () => {
+        // Iniciar música en  la interacción owo
+        musica.play()
+            .then(() => {
+                actualizarBotonMusica();
+            })
+            .catch(() => {
+                actualizarBotonMusica();
+            });
 
-        actualizarBotonMusica();
-    })
-    .catch(() => {
-        /* El navegador bloqueó el autoplay.
-           El usuario puede iniciarla con el botón. */
-        actualizarBotonMusica();
+        // Ocultar pantalla del sobre
+        pantallaInicial.classList.add("oculta");
     });
-
+}
 
 /* Play / Pause manual */
 
