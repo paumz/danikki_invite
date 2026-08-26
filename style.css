@@ -508,3 +508,48 @@ main {
 
     transform: scale(1.08);
 }
+
+/* CONTROL DE MÚSICA */
+
+.control-musica {
+    position: fixed;
+
+    right: 28px;
+    bottom: 28px;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(17, 17, 17, 0.45);
+    border-radius: 50%;
+
+    background: rgba(245, 240, 232, 0.8);
+    color: #111;
+
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    backdrop-filter: blur(4px);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.control-musica:hover {
+    background: #111;
+    color: #f5f0e8;
+
+    transform: scale(1.08);
+}
