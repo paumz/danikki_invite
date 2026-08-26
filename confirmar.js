@@ -134,3 +134,4 @@ function configurarBotonVolver() {
         botonVolver.href = `index.html${window.location.search}`;
     }
 }
+configurarBotonVolver();
