@@ -673,3 +673,12 @@ main {
     background: transparent;
     color: #111;
 }
+
+//vistas
+.vista-oculta {
+    display: none;
+}
+
+.vista-activa {
+    display: block;
+}
