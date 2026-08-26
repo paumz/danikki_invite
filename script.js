@@ -190,10 +190,12 @@ const botonVolver = document.getElementById("volver-inicio");
 if (botonVolver) {
     botonVolver.addEventListener("click", function(event) {
         event.preventDefault();
-        const parametros = new URLSearchParams(window.location.search);
-        const query = parametros.toString();
-         window.location.href = query
+        //const parametros = new URLSearchParams(window.location.search);
+        //const query = parametros.toString();
+        const query = window.location.search;
+        /*window.location.href = query
             ? `index.html?${query}`
-            : "index.html";
+            : "index.html";*/
+        window.location.href = `index.html${query}`;
     });
 }
