@@ -210,6 +210,21 @@ if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
     });
 }
 
+/* REGRESAR AL INICIO DESDE CONFIRMACIÓN */
+
+function volverALaInvitacion(event) {
+    event.preventDefault();
+    vistaConfirmacion.classList.remove("activa");
+    vistaInvitacion.style.display = "block";
+    window.scrollTo(0, 0);
+
+}
+
+const botonVolverInicial = document.getElementById("volver-inicio");
+if (botonVolverInicial) {
+    botonVolverInicial.addEventListener("click", volverALaInvitacion);
+}
+
 /* ABRIR INVITACIÓN */
 
 const pantallaInicial = document.getElementById("pantalla-inicial");
@@ -393,14 +408,11 @@ function mostrarConfirmacion(respuesta) {
 function configurarBotonVolver() {
     const botonVolver = document.getElementById("volver-inicio");
     if (!botonVolver) return;
-    botonVolver.addEventListener("click", (event) => {
-        event.preventDefault();
-        vistaConfirmacion.classList.remove("activa");
-        vistaInvitacion.style.display = "block";
-        window.scrollTo(0, 0);
-    });
+    botonVolver.addEventListener(
+        "click",
+        volverALaInvitacion
+    );
 }
-
 /* Cargar información al abrir confirmación */
 
 const botonConfirmacion = document.getElementById("confirmar-btn");
