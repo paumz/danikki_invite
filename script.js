@@ -185,16 +185,51 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
 const musica = document.getElementById("musica");
 const controlMusica = document.getElementById("control-musica");
 
-controlMusica.addEventListener("click", () => {
+function actualizarBotonMusica() {
+    if (musica.paused) {
+        controlMusica.textContent = "▶";
+        controlMusica.setAttribute(
+            "aria-label",
+            "Reproducir música"
+        );
+        controlMusica.title = "Reproducir música";
+    } else {
+        controlMusica.textContent = "Ⅱ";
+        controlMusica.setAttribute(
+            "aria-label",
+            "Pausar música"
+        );
+        controlMusica.title = "Pausar música";
+    }
+}
 
+
+/* Intentar reproducir automáticamente */
+
+musica.play()
+    .then(() => {
+
+        actualizarBotonMusica();
+    })
+    .catch(() => {
+        /* El navegador bloqueó el autoplay.
+           El usuario puede iniciarla con el botón. */
+        actualizarBotonMusica();
+    });
+
+
+/* Play / Pause manual */
+
+controlMusica.addEventListener("click", () => {
     if (musica.paused) {
         musica.play();
-        controlMusica.textContent = "❚❚";
-        controlMusica.setAttribute("aria-label", "Pausar música");
     } else {
         musica.pause();
-        controlMusica.textContent = "♫";
-        controlMusica.setAttribute("aria-label", "Reproducir música");
     }
-
 });
+
+
+/* Actualizar icono */
+
+musica.addEventListener("play", actualizarBotonMusica);
+musica.addEventListener("pause", actualizarBotonMusica);
