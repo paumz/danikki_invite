@@ -553,3 +553,123 @@ main {
 
     transform: scale(1.08);
 }
+
+/* =========================
+   PANTALLA INICIAL / SOBRE
+========================= */
+
+.pantalla-inicial {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #111;
+
+    z-index: 1000;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.pantalla-inicial.oculta {
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+.sobre {
+    position: relative;
+
+    width: 320px;
+    height: 210px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #f5f0e8;
+
+    border: 1px solid rgba(245, 240, 232, 0.4);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.sobre::before,
+.sobre::after {
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+    height: 0;
+}
+
+/* Líneas decorativas del sobre */
+
+.sobre::before {
+    left: 0;
+    bottom: 0;
+
+    border-top: 105px solid transparent;
+    border-bottom: 105px solid transparent;
+    border-left: 160px solid rgba(17, 17, 17, 0.05);
+}
+
+.sobre::after {
+    right: 0;
+    bottom: 0;
+
+    border-top: 105px solid transparent;
+    border-bottom: 105px solid transparent;
+    border-right: 160px solid rgba(17, 17, 17, 0.05);
+}
+
+.sello {
+    font-size: 28px;
+
+    margin-bottom: 15px;
+
+    z-index: 1;
+}
+
+.sobre-nombres {
+    margin: 0 0 22px;
+
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 38px;
+
+    font-style: normal;
+
+    z-index: 1;
+}
+
+.abrir-invitacion {
+    padding: 10px 26px;
+
+    background: #111;
+    color: #f5f0e8;
+
+    border: 1px solid #111;
+
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    z-index: 1;
+
+    transition: 0.25s ease;
+}
+
+.abrir-invitacion:hover {
+    background: transparent;
+    color: #111;
+}
