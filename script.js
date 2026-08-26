@@ -187,13 +187,13 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
 });
 
 const botonVolver = document.getElementById("volver-inicio");
-
 if (botonVolver) {
     botonVolver.addEventListener("click", function(event) {
         event.preventDefault();
-
         const parametros = new URLSearchParams(window.location.search);
-
-        window.location.href = `index.html?${parametros.toString()}`;
+        const query = parametros.toString();
+         window.location.href = query
+            ? `index.html?${query}`
+            : "index.html";
     });
 }
