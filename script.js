@@ -203,12 +203,11 @@ const vistaConfirmacion = document.getElementById("vista-confirmacion");
 if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
     botonConfirmar.addEventListener("click", function(event) {
         event.preventDefault();
+        cargarInformacionConfirmacion();
         vistaInvitacion.style.display = "none";
         vistaConfirmacion.classList.add("activa");
         window.scrollTo(0, 0);
-
     });
-
 }
 
 /* ABRIR INVITACIÓN */
@@ -258,3 +257,155 @@ setInterval(() => {
         sessionStorage.setItem("musicaActiva", "true");
     }
 }, 500);
+
+//post-migracion
+
+/* =========================   LÓGICA DE CONFIRMACIÓN========================= */
+
+/* Datos del invitado */
+
+const idInvitado = parametros.get("id");
+const invitadosConfirmacion = Number(parametros.get("inv")) || 1;
+const nombreInvitado = document.getElementById("nombre-invitado");
+const mensajeInvitados = document.getElementById("mensaje-invitados");
+const preguntaConfirmacion = document.querySelector("#vista-confirmacion .pregunta");
+
+
+/* Preparar información de confirmación */
+
+function cargarInformacionConfirmacion() {
+    if (nombre) {
+        nombreInvitado.textContent = nombre;
+    } else {
+        nombreInvitado.textContent = "Querido invitado";
+    }
+
+    if (invitadosConfirmacion === 1) {
+        mensajeInvitados.innerHTML = `
+            Hemos reservado <strong>1 lugar</strong> para ti.
+        `;
+        preguntaConfirmacion.textContent =
+            "¿Tendremos el placer de contar contigo?";
+    } else {
+        mensajeInvitados.innerHTML = `
+            Hemos reservado <strong>${invitadosConfirmacion} lugares</strong> para ustedes.
+        `;
+        preguntaConfirmacion.textContent =
+            "¿Tendremos el placer de contar con su presencia?";
+    }
+}
+
+
+/* Registrar respuesta */
+
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxdtlqF3OGMObzldKrhWi6TLT5pH5WHpLl54oP2arW27FAPgfIABWUL4qGQ2NtslwISXQ/exec";
+
+
+function registrarRespuesta(respuesta) {
+    const datos = {
+        id: idInvitado,
+        nombre: nombre || "Querido invitado",
+        invitados: invitadosConfirmacion,
+        respuesta: respuesta
+    };
+
+    fetch(URL_SCRIPT, {
+        method: "POST",
+        body: JSON.stringify(datos)
+    })
+
+    .then(() => {
+
+        console.log("Respuesta registrada");
+        mostrarConfirmacion(respuesta);
+    })
+
+    .catch((error) => {
+        console.error("Error:", error);
+        alert(
+            "Hubo un problema al registrar tu respuesta."
+        );
+    });
+}
+
+/* Botones SÍ / NO */
+
+const botonSi = document.getElementById("confirmar-si");
+const botonNo = document.getElementById("confirmar-no");
+
+if (botonSi) {
+    botonSi.addEventListener("click", () => {
+        registrarRespuesta("Sí");
+    });
+}
+
+if (botonNo) {
+    botonNo.addEventListener("click", () => {
+        registrarRespuesta("No");
+    });
+}
+
+/* Mostrar respuesta final */
+
+function mostrarConfirmacion(respuesta) {
+    if (respuesta === "Sí") {
+        vistaConfirmacion.innerHTML = `
+            <h1>PAU<br>&<br>DAN</h1>
+            <p class="subtitulo">
+                ASISTENCIA CONFIRMADA
+            </p>
+            <div class="separador">✦</div>
+            <p class="saludo-confirmacion">
+                Nos encantará celebrar contigo.
+            </p>
+            <p>
+                Gracias por formar parte de este capítulo
+                de nuestra historia.
+            </p>
+            <a href="#" class="volver-inicio" id="volver-inicio">
+                ← REGRESAR AL INICIO
+            </a>
+        `;
+    } else {
+        vistaConfirmacion.innerHTML = `
+            <h1>PAU<br> &<br> DAN</h1>
+            <p class="subtitulo">
+                RESPUESTA RECIBIDA
+            </p>
+            <div class="separador">✦</div>
+            <p class="saludo-confirmacion">
+                Te extrañaremos esa noche.
+            </p>
+            <p>
+                Gracias por avisarnos y por formar parte
+                de nuestra historia.
+            </p>
+            <a href="#" class="volver-inicio" id="volver-inicio">
+                ← REGRESAR AL INICIO
+            </a>
+        `;
+    }
+    configurarBotonVolver();
+}
+
+/* Regresar a la invitación */
+
+function configurarBotonVolver() {
+    const botonVolver = document.getElementById("volver-inicio");
+    if (!botonVolver) return;
+    botonVolver.addEventListener("click", (event) => {
+        event.preventDefault();
+        vistaConfirmacion.classList.remove("activa");
+        vistaInvitacion.style.display = "block";
+        window.scrollTo(0, 0);
+    });
+}
+
+/* Cargar información al abrir confirmación */
+
+const botonConfirmacion = document.getElementById("confirmar-btn");
+if (botonConfirmacion) {
+    botonConfirmacion.addEventListener("click", () => {
+        cargarInformacionConfirmacion();
+    });
+}
