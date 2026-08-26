@@ -213,6 +213,25 @@ main {
     box-shadow: 0 8px 20px rgba(17, 17, 17, 0.18);
 }
 
+.mapa-link {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: #111;
+    text-decoration: none;
+
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+
+    border-bottom: 1px solid rgba(17, 17, 17, 0.4);
+
+    padding-bottom: 4px;
+
+    transition: 0.25s ease;
+}
+
 @keyframes aparecer {
     from {
         opacity: 0;
