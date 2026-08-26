@@ -239,3 +239,12 @@ controlMusica.addEventListener("click", () => {
 
 musica.addEventListener("play", actualizarBotonMusica);
 musica.addEventListener("pause", actualizarBotonMusica);
+
+/* GUARDAR POSICIÓN DE LA MÚSICA */
+
+setInterval(() => {
+    if (!musica.paused) {
+        sessionStorage.setItem("musicaTiempo", musica.currentTime);
+        sessionStorage.setItem("musicaActiva", "true");
+    }
+}, 500);
