@@ -106,49 +106,6 @@ botones.forEach((boton) => {
 
 const fechaBoda = new Date("2026-10-31T18:00:00");
 
-function actualizarCuentaRegresiva() {
-
-    const ahora = new Date();
-    const diferencia = fechaBoda - ahora;
-
-    if (diferencia <= 0) {
-        document.getElementById("dias").textContent = "00";
-        document.getElementById("horas").textContent = "00";
-        document.getElementById("minutos").textContent = "00";
-        document.getElementById("segundos").textContent = "00";
-
-        return;
-    }
-
-    const dias = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
-    );
-
-    const horas = Math.floor(
-        (diferencia / (1000 * 60 * 60)) % 24
-    );
-
-    const minutos = Math.floor(
-        (diferencia / (1000 * 60)) % 60
-    );
-
-    const segundos = Math.floor(
-        (diferencia / 1000) % 60
-    );
-
-    document.getElementById("dias").textContent =
-        String(dias).padStart(2, "0");
-
-    document.getElementById("horas").textContent =
-        String(horas).padStart(2, "0");
-
-    document.getElementById("minutos").textContent =
-        String(minutos).padStart(2, "0");
-
-    document.getElementById("segundos").textContent =
-        String(segundos).padStart(2, "0");
-}
-
 actualizarCuentaRegresiva();
 setInterval(actualizarCuentaRegresiva, 1000);
 
@@ -176,29 +133,12 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
 const musica = document.getElementById("musica");
 const controlMusica = document.getElementById("control-musica");
 
-function actualizarBotonMusica() {
-    if (musica.paused) {
-        controlMusica.textContent = "▶";
-        controlMusica.setAttribute(
-            "aria-label",
-            "Reproducir música"
-        );
-        controlMusica.title = "Reproducir música";
-    } else {
-        controlMusica.textContent = "Ⅱ";
-        controlMusica.setAttribute(
-            "aria-label",
-            "Pausar música"
-        );
-        controlMusica.title = "Pausar música";
-    }
-}
-
 /* CAMBIAR A VISTA DE CONFIRMACIÓN */
 
 const botonConfirmar = document.getElementById("confirmar-btn");
 const vistaInvitacion = document.getElementById("vista-invitacion");
 const vistaConfirmacion = document.getElementById("vista-confirmacion");
+const contenidoOriginalConfirmacion = vistaConfirmacion.innerHTML;
 
 if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
     botonConfirmar.addEventListener("click", function(event) {
@@ -211,14 +151,6 @@ if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
 }
 
 /* REGRESAR AL INICIO DESDE CONFIRMACIÓN */
-
-function volverALaInvitacion(event) {
-    event.preventDefault();
-    vistaConfirmacion.classList.remove("activa");
-    vistaInvitacion.style.display = "block";
-    window.scrollTo(0, 0);
-
-}
 
 const botonVolverInicial = document.getElementById("volver-inicio");
 if (botonVolverInicial) {
@@ -285,7 +217,97 @@ const nombreInvitado = document.getElementById("nombre-invitado");
 const mensajeInvitados = document.getElementById("mensaje-invitados");
 const preguntaConfirmacion = document.querySelector("#vista-confirmacion .pregunta");
 
+/* Registrar respuesta */
 
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxdtlqF3OGMObzldKrhWi6TLT5pH5WHpLl54oP2arW27FAPgfIABWUL4qGQ2NtslwISXQ/exec";
+
+
+/* Botones SÍ / NO */
+
+const botonSi = document.getElementById("confirmar-si");
+const botonNo = document.getElementById("confirmar-no");
+
+if (botonSi) {
+    botonSi.addEventListener("click", () => {
+        registrarRespuesta("Sí");
+    });
+}
+
+if (botonNo) {
+    botonNo.addEventListener("click", () => {
+        registrarRespuesta("No");
+    });
+}
+
+/* Cargar información al abrir confirmación */
+
+const botonConfirmacion = document.getElementById("confirmar-btn");
+if (botonConfirmacion) {
+    botonConfirmacion.addEventListener("click", () => {
+        cargarInformacionConfirmacion();
+    });
+}
+
+//FUNCIONES!!!
+
+function actualizarCuentaRegresiva() {
+    const ahora = new Date();
+    const diferencia = fechaBoda - ahora;
+    if (diferencia <= 0) {
+        document.getElementById("dias").textContent = "00";
+        document.getElementById("horas").textContent = "00";
+        document.getElementById("minutos").textContent = "00";
+        document.getElementById("segundos").textContent = "00";
+        return;
+    }
+    const dias = Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+    );
+    const horas = Math.floor(
+        (diferencia / (1000 * 60 * 60)) % 24
+    );
+    const minutos = Math.floor(
+        (diferencia / (1000 * 60)) % 60
+    );
+    const segundos = Math.floor(
+        (diferencia / 1000) % 60
+    );
+    document.getElementById("dias").textContent = String(dias).padStart(2, "0");
+    document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+    document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+    document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+}
+
+function actualizarBotonMusica() {
+    if (musica.paused) {
+        controlMusica.textContent = "▶";
+        controlMusica.setAttribute(
+            "aria-label",
+            "Reproducir música"
+        );
+        controlMusica.title = "Reproducir música";
+    } else {
+        controlMusica.textContent = "Ⅱ";
+        controlMusica.setAttribute(
+            "aria-label",
+            "Pausar música"
+        );
+        controlMusica.title = "Pausar música";
+    }
+}
+
+function restaurarConfirmacion() {
+    vistaConfirmacion.innerHTML = contenidoOriginalConfirmacion;
+    inicializarConfirmacion();
+}
+
+function volverALaInvitacion(event) {
+    event.preventDefault();
+    vistaConfirmacion.classList.remove("activa");
+    vistaInvitacion.style.display = "block";
+    window.scrollTo(0, 0);
+
+}
 /* Preparar información de confirmación */
 
 function cargarInformacionConfirmacion() {
@@ -309,12 +331,6 @@ function cargarInformacionConfirmacion() {
             "¿Tendremos el placer de contar con su presencia?";
     }
 }
-
-
-/* Registrar respuesta */
-
-const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxdtlqF3OGMObzldKrhWi6TLT5pH5WHpLl54oP2arW27FAPgfIABWUL4qGQ2NtslwISXQ/exec";
-
 
 function registrarRespuesta(respuesta) {
     const datos = {
@@ -342,26 +358,6 @@ function registrarRespuesta(respuesta) {
         );
     });
 }
-
-/* Botones SÍ / NO */
-
-const botonSi = document.getElementById("confirmar-si");
-const botonNo = document.getElementById("confirmar-no");
-
-if (botonSi) {
-    botonSi.addEventListener("click", () => {
-        registrarRespuesta("Sí");
-    });
-}
-
-if (botonNo) {
-    botonNo.addEventListener("click", () => {
-        registrarRespuesta("No");
-    });
-}
-
-/* Mostrar respuesta final */
-
 function mostrarConfirmacion(respuesta) {
     if (respuesta === "Sí") {
         vistaConfirmacion.innerHTML = `
@@ -403,8 +399,6 @@ function mostrarConfirmacion(respuesta) {
     configurarBotonVolver();
 }
 
-/* Regresar a la invitación */
-
 function configurarBotonVolver() {
     const botonVolver = document.getElementById("volver-inicio");
     if (!botonVolver) return;
@@ -412,12 +406,4 @@ function configurarBotonVolver() {
         "click",
         volverALaInvitacion
     );
-}
-/* Cargar información al abrir confirmación */
-
-const botonConfirmacion = document.getElementById("confirmar-btn");
-if (botonConfirmacion) {
-    botonConfirmacion.addEventListener("click", () => {
-        cargarInformacionConfirmacion();
-    });
 }
