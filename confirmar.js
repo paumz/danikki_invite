@@ -97,6 +97,7 @@ function mostrarConfirmacion(respuesta) {
             <a href="#" class="volver-inicio" id="volver-inicio">
                 ← REGRESAR AL INICIO
             </a>
+            configurarBotonVolver();
         `;
 
     } else {
@@ -120,6 +121,22 @@ function mostrarConfirmacion(respuesta) {
             <a href="#" class="volver-inicio" id="volver-inicio">
                 ← REGRESAR AL INICIO
             </a>
+            configurarBotonVolver();
         `;
+    }
+}
+
+//functions
+function configurarBotonVolver() {
+    const botonVolver = document.getElementById("volver-inicio");
+
+    if (botonVolver) {
+        botonVolver.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            const parametros = new URLSearchParams(window.location.search);
+
+            window.location.href = `index.html?${parametros.toString()}`;
+        });
     }
 }
