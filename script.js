@@ -229,8 +229,10 @@ if (botonAbrir) {
 controlMusica.addEventListener("click", () => {
     if (musica.paused) {
         musica.play();
+        sessionStorage.setItem("musicaActiva", "true");
     } else {
         musica.pause();
+        sessionStorage.setItem("musicaActiva", "false");
     }
 });
 
