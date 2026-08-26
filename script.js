@@ -143,6 +143,7 @@ const contenidoOriginalConfirmacion = vistaConfirmacion.innerHTML;
 if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
     botonConfirmar.addEventListener("click", function(event) {
         event.preventDefault();
+        restaurarConfirmacion();
         cargarInformacionConfirmacion();
         vistaInvitacion.style.display = "none";
         vistaConfirmacion.classList.add("activa");
@@ -406,4 +407,24 @@ function configurarBotonVolver() {
         "click",
         volverALaInvitacion
     );
+}
+
+function inicializarConfirmacion() {
+    const botonSi = document.getElementById("confirmar-si");
+    const botonNo = document.getElementById("confirmar-no");
+    if (botonSi) {
+        botonSi.addEventListener("click", () => {
+            registrarRespuesta("Sí");
+        });
+    }
+    if (botonNo) {
+        botonNo.addEventListener("click", () => {
+            registrarRespuesta("No");
+        });
+    }
+    const botonVolver = document.getElementById("volver-inicio");
+    if (botonVolver) {
+        botonVolver.addEventListener("click", volverALaInvitacion);
+    }
+
 }
