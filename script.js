@@ -153,12 +153,37 @@ actualizarCuentaRegresiva();
 setInterval(actualizarCuentaRegresiva, 1000);
 
 /* CONFIRMAR ASISTENCIA
-   Conserva los parámetros al pasar a confirmar.html */
-
+   Conserva los parámetros al pasar a confirmar.html DEPRECATED */
+/*
 const botonConfirmar = document.getElementById("confirmar-btn");
 
 if (botonConfirmar) {
     botonConfirmar.href = `confirmar.html${window.location.search}`;
+}*/
+
+/* CONFIRMAR ASISTENCIA */
+
+const botonConfirmar = document.getElementById("confirmar-btn");
+
+if (botonConfirmar) {
+    botonConfirmar.addEventListener("click", (event) => {
+        event.preventDefault();
+        // Guardar exactamente dónde va la música
+        sessionStorage.setItem(
+            "musicaTiempo",
+            musica.currentTime
+        );
+
+        // Guardar si estaba reproduciéndose
+        sessionStorage.setItem(
+            "musicaActiva",
+            musica.paused ? "false" : "true"
+        );
+
+        // Ir a confirmar conservando parámetros
+        window.location.href =
+            `confirmar.html${window.location.search}`;
+    });
 }
 
 
