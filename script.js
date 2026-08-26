@@ -12,7 +12,16 @@ const informacion = {
 
     lugar: {
         titulo: "LUGAR",
-        texto: "Próximamente<br>Puebla, México"
+        texto: `
+                Makky Salón Jardín<br>
+                Ruta Quetzalcóatl 8, Los Gallos, 72510 San Andrés Cholula, Pue.<br><br>
+        
+                <a href="https://maps.app.goo.gl/rG18pAyRqdzLNYYs6"
+                   target="_blank"
+                   class="mapa-link">
+                   ✦ MAPA ↗ ✦
+                </a>
+    `
     },
 
     dresscode: {
