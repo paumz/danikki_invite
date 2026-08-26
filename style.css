@@ -682,3 +682,18 @@ main {
 .vista-activa {
     display: block;
 }
+/* =========================
+   VISTAS DE LA INVITACIÓN
+========================= */
+
+#vista-invitacion {
+    display: block;
+}
+
+#vista-confirmacion {
+    display: none;
+}
+
+#vista-confirmacion.activa {
+    display: block;
+}
