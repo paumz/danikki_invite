@@ -200,13 +200,16 @@ const botonConfirmar = document.getElementById("confirmar-btn");
 const vistaInvitacion = document.getElementById("vista-invitacion");
 const vistaConfirmacion = document.getElementById("vista-confirmacion");
 
-botonConfirmar.addEventListener("click", function(event) {
-    event.preventDefault();
-    vistaInvitacion.classList.add("vista-oculta");
-    vistaConfirmacion.classList.remove("vista-oculta");
+if (botonConfirmar && vistaInvitacion && vistaConfirmacion) {
+    botonConfirmar.addEventListener("click", function(event) {
+        event.preventDefault();
+        vistaInvitacion.style.display = "none";
+        vistaConfirmacion.classList.add("activa");
+        window.scrollTo(0, 0);
 
-    window.scrollTo(0, 0);
-});
+    });
+
+}
 
 /* ABRIR INVITACIÓN */
 
