@@ -206,7 +206,7 @@ function actualizarBotonMusica() {
 }
 
 /* CONFIRMAR ASISTENCIA */
-
+/*
 const botonConfirmar = document.getElementById("confirmar-btn");
 
 if (botonConfirmar) {
@@ -228,6 +228,31 @@ if (botonConfirmar) {
         window.location.href =
             `confirmar.html${window.location.search}`;
     });
+}
+*/
+
+/* CAMBIAR A VISTA DE CONFIRMACIÓN */
+
+const botonConfirmar = document.getElementById("confirmar-btn");
+
+const vistaInvitacion =
+    document.getElementById("vista-invitacion");
+
+const vistaConfirmacion =
+    document.getElementById("vista-confirmacion");
+
+if (botonConfirmar) {
+    botonConfirmar.addEventListener("click", (event) => {
+        event.preventDefault();
+        vistaInvitacion.classList.add("vista-oculta");
+        vistaConfirmacion.classList.remove("vista-oculta");
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
 }
 
 /* ABRIR INVITACIÓN */
