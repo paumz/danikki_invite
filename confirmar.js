@@ -135,3 +135,77 @@ function configurarBotonVolver() {
     }
 }
 configurarBotonVolver();
+
+/* RESTAURAR MÚSICA */
+
+const musica = document.getElementById("musica");
+const controlMusica = document.getElementById("control-musica");
+
+function actualizarBotonMusica() {
+    if (musica.paused) {
+        controlMusica.textContent = "▶";
+        controlMusica.setAttribute("aria-label", "Reproducir música");
+    } else {
+        controlMusica.textContent = "Ⅱ";
+        controlMusica.setAttribute("aria-label", "Pausar música");
+    }
+}
+
+
+/* Recuperar posición anterior */
+
+const tiempoGuardado = sessionStorage.getItem("musicaTiempo");
+const musicaActiva = sessionStorage.getItem("musicaActiva");
+
+if (tiempoGuardado) {
+    musica.currentTime = parseFloat(tiempoGuardado);
+}
+
+
+/* Continuar si estaba reproduciéndose */
+
+if (musicaActiva === "true") {
+
+    musica.play()
+        .then(() => {
+            actualizarBotonMusica();
+        })
+        .catch(() => {
+            actualizarBotonMusica();
+        });
+
+} else {
+    actualizarBotonMusica();
+}
+
+
+/* Play / Pause */
+
+controlMusica.addEventListener("click", () => {
+
+    if (musica.paused) {
+
+        musica.play();
+        sessionStorage.setItem("musicaActiva", "true");
+
+    } else {
+
+        musica.pause();
+        sessionStorage.setItem("musicaActiva", "false");
+
+    }
+
+});
+
+
+musica.addEventListener("play", actualizarBotonMusica);
+musica.addEventListener("pause", actualizarBotonMusica);
+
+
+/* Guardar posición */
+
+setInterval(() => {
+    if (!musica.paused) {
+        sessionStorage.setItem("musicaTiempo", musica.currentTime);
+    }
+}, 500);
