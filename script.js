@@ -153,7 +153,8 @@ actualizarCuentaRegresiva();
 
 setInterval(actualizarCuentaRegresiva, 1000);
 
-/*Confirmación de asistencia*/
+/*Confirmación de asistencia DELETED*/
+/*
 const botonConfirmar = document.getElementById("confirmar-btn");
 if (botonConfirmar) {
     botonConfirmar.addEventListener("click", function(event) {
@@ -162,6 +163,7 @@ if (botonConfirmar) {
         window.location.href = `confirmar.html?${parametros.toString()}`;
     });
 }
+*/
 document.querySelectorAll(".marquesina img").forEach((imagen) => {
     imagen.addEventListener("dragstart", (event) => {
         event.preventDefault();
@@ -181,7 +183,8 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
     });
 });
 
-//regresar
+//regresar DELETED
+/*
 const botonVolver = document.getElementById("volver-inicio");
 if (botonVolver) {
     botonVolver.addEventListener("click", function(event) {
@@ -194,4 +197,20 @@ if (botonVolver) {
             : "index.html";*/
         window.location.href = `index.html${query}`;
     });
+}
+*/
+
+/* Mantener parámetros entre páginas */
+
+const parametrosActuales = window.location.search;
+const botonConfirmar = document.getElementById("confirmar-btn");
+
+if (botonConfirmar && parametrosActuales) {
+    botonConfirmar.href = `confirmar.html${parametrosActuales}`;
+}
+
+const botonVolver = document.getElementById("volver-inicio");
+
+if (botonVolver && parametrosActuales) {
+    botonVolver.href = `index.html${parametrosActuales}`;
 }
