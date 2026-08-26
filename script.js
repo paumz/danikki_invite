@@ -414,11 +414,13 @@ function inicializarConfirmacion() {
     const botonNo = document.getElementById("confirmar-no");
     if (botonSi) {
         botonSi.addEventListener("click", () => {
+            mostrarLoading(botonSi);
             registrarRespuesta("Sí");
         });
     }
     if (botonNo) {
         botonNo.addEventListener("click", () => {
+            mostrarLoading(botonNo);
             registrarRespuesta("No");
         });
     }
@@ -426,5 +428,24 @@ function inicializarConfirmacion() {
     if (botonVolver) {
         botonVolver.addEventListener("click", volverALaInvitacion);
     }
+
+}
+
+function mostrarLoading(botonSeleccionado) {
+
+    const botonSi = document.getElementById("confirmar-si");
+    const botonNo = document.getElementById("confirmar-no");
+
+    // Bloqueamos ambos botones
+    if (botonSi) {
+        botonSi.disabled = true;
+    }
+
+    if (botonNo) {
+        botonNo.disabled = true;
+    }
+
+    // Solo el botón seleccionado muestra el spinner
+    botonSeleccionado.classList.add("cargando");
 
 }
