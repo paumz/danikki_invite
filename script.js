@@ -185,3 +185,15 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
         event.preventDefault();
     });
 });
+
+const botonVolver = document.getElementById("volver-inicio");
+
+if (botonVolver) {
+    botonVolver.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const parametros = new URLSearchParams(window.location.search);
+
+        window.location.href = `index.html?${parametros.toString()}`;
+    });
+}
