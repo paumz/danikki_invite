@@ -152,17 +152,6 @@ function actualizarCuentaRegresiva() {
 actualizarCuentaRegresiva();
 setInterval(actualizarCuentaRegresiva, 1000);
 
-/* CONFIRMAR ASISTENCIA
-   Conserva los parámetros al pasar a confirmar.html DEPRECATED */
-/*
-const botonConfirmar = document.getElementById("confirmar-btn");
-
-if (botonConfirmar) {
-    botonConfirmar.href = `confirmar.html${window.location.search}`;
-}*/
-
-
-
 
 /* BLOQUEAR ARRASTRE, CLICK Y MENÚ EN FOTOS */
 
@@ -205,55 +194,19 @@ function actualizarBotonMusica() {
     }
 }
 
-/* CONFIRMAR ASISTENCIA */
-/*
-const botonConfirmar = document.getElementById("confirmar-btn");
-
-if (botonConfirmar) {
-    botonConfirmar.addEventListener("click", (event) => {
-        event.preventDefault();
-        // Guardar exactamente dónde va la música
-        sessionStorage.setItem(
-            "musicaTiempo",
-            musica.currentTime
-        );
-
-        // Guardar si estaba reproduciéndose
-        sessionStorage.setItem(
-            "musicaActiva",
-            musica.paused ? "false" : "true"
-        );
-
-        // Ir a confirmar conservando parámetros
-        window.location.href =
-            `confirmar.html${window.location.search}`;
-    });
-}
-*/
-
 /* CAMBIAR A VISTA DE CONFIRMACIÓN */
 
 const botonConfirmar = document.getElementById("confirmar-btn");
+const vistaInvitacion = document.getElementById("vista-invitacion");
+const vistaConfirmacion = document.getElementById("vista-confirmacion");
 
-const vistaInvitacion =
-    document.getElementById("vista-invitacion");
+botonConfirmar.addEventListener("click", function(event) {
+    event.preventDefault();
+    vistaInvitacion.classList.add("vista-oculta");
+    vistaConfirmacion.classList.remove("vista-oculta");
 
-const vistaConfirmacion =
-    document.getElementById("vista-confirmacion");
-
-if (botonConfirmar) {
-    botonConfirmar.addEventListener("click", (event) => {
-        event.preventDefault();
-        vistaInvitacion.classList.add("vista-oculta");
-        vistaConfirmacion.classList.remove("vista-oculta");
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-}
+    window.scrollTo(0, 0);
+});
 
 /* ABRIR INVITACIÓN */
 
