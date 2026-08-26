@@ -161,30 +161,7 @@ if (botonConfirmar) {
     botonConfirmar.href = `confirmar.html${window.location.search}`;
 }*/
 
-/* CONFIRMAR ASISTENCIA */
 
-const botonConfirmar = document.getElementById("confirmar-btn");
-
-if (botonConfirmar) {
-    botonConfirmar.addEventListener("click", (event) => {
-        event.preventDefault();
-        // Guardar exactamente dónde va la música
-        sessionStorage.setItem(
-            "musicaTiempo",
-            musica.currentTime
-        );
-
-        // Guardar si estaba reproduciéndose
-        sessionStorage.setItem(
-            "musicaActiva",
-            musica.paused ? "false" : "true"
-        );
-
-        // Ir a confirmar conservando parámetros
-        window.location.href =
-            `confirmar.html${window.location.search}`;
-    });
-}
 
 
 /* BLOQUEAR ARRASTRE, CLICK Y MENÚ EN FOTOS */
@@ -226,6 +203,31 @@ function actualizarBotonMusica() {
         );
         controlMusica.title = "Pausar música";
     }
+}
+
+/* CONFIRMAR ASISTENCIA */
+
+const botonConfirmar = document.getElementById("confirmar-btn");
+
+if (botonConfirmar) {
+    botonConfirmar.addEventListener("click", (event) => {
+        event.preventDefault();
+        // Guardar exactamente dónde va la música
+        sessionStorage.setItem(
+            "musicaTiempo",
+            musica.currentTime
+        );
+
+        // Guardar si estaba reproduciéndose
+        sessionStorage.setItem(
+            "musicaActiva",
+            musica.paused ? "false" : "true"
+        );
+
+        // Ir a confirmar conservando parámetros
+        window.location.href =
+            `confirmar.html${window.location.search}`;
+    });
 }
 
 /* ABRIR INVITACIÓN */
