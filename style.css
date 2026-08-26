@@ -444,3 +444,28 @@ main {
         transform: translateX(-50%);
     }
 }
+
+.volver-inicio {
+    display: inline-block;
+
+    margin-top: 35px;
+    padding: 10px 20px;
+
+    color: #111;
+    background: transparent;
+
+    border: 1px solid rgba(17, 17, 17, 0.5);
+
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.volver-inicio:hover {
+    background: #111;
+    color: #f5f0e8;
+}
