@@ -155,23 +155,18 @@ setInterval(actualizarCuentaRegresiva, 1000);
 
 /*Confirmación de asistencia*/
 const botonConfirmar = document.getElementById("confirmar-btn");
-
 if (botonConfirmar) {
     botonConfirmar.addEventListener("click", function(event) {
         event.preventDefault();
-
-        const parametros = new URLSearchParams(window.location.search);
-
+        //const parametros = new URLSearchParams(window.location.search);
         window.location.href = `confirmar.html?${parametros.toString()}`;
     });
 }
-
 document.querySelectorAll(".marquesina img").forEach((imagen) => {
     imagen.addEventListener("dragstart", (event) => {
         event.preventDefault();
     });
 });
-
 document.querySelectorAll(".marquesina img").forEach((imagen) => {
     imagen.addEventListener("click", (event) => {
         event.preventDefault();
@@ -186,6 +181,7 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
     });
 });
 
+//regresar
 const botonVolver = document.getElementById("volver-inicio");
 if (botonVolver) {
     botonVolver.addEventListener("click", function(event) {
