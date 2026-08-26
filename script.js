@@ -179,3 +179,22 @@ document.querySelectorAll(".marquesina img").forEach((imagen) => {
     });
 
 });
+
+/* MÚSICA DE FONDO */
+
+const musica = document.getElementById("musica");
+const controlMusica = document.getElementById("control-musica");
+
+controlMusica.addEventListener("click", () => {
+
+    if (musica.paused) {
+        musica.play();
+        controlMusica.textContent = "❚❚";
+        controlMusica.setAttribute("aria-label", "Pausar música");
+    } else {
+        musica.pause();
+        controlMusica.textContent = "♫";
+        controlMusica.setAttribute("aria-label", "Reproducir música");
+    }
+
+});
