@@ -78,7 +78,7 @@ function mostrarConfirmacion(respuesta) {
     if (respuesta === "Sí") {
 
         main.innerHTML = `
-            <h1>PAU & DAN</h1>
+            <h1>PAU<br> &<br> DAN</h1>
 
             <p class="subtitulo">
                 ASISTENCIA CONFIRMADA
@@ -93,6 +93,10 @@ function mostrarConfirmacion(respuesta) {
             <p>
                 Gracias por formar parte de este capítulo de nuestra historia.
             </p>
+
+            <a href="#" class="volver-inicio" id="volver-inicio">
+                ← REGRESAR AL INICIO
+            </a>
         `;
 
     } else {
@@ -113,6 +117,9 @@ function mostrarConfirmacion(respuesta) {
             <p>
                 Gracias por acompañarnos, aunque sea desde la distancia.
             </p>
+            <a href="#" class="volver-inicio" id="volver-inicio">
+                ← REGRESAR AL INICIO
+            </a>
         `;
     }
 }
