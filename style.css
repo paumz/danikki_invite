@@ -327,6 +327,10 @@ main {
     color: #111;
 }
 
+.confirmar-btn i {
+    margin-right: 10px;
+}
+
 .countdown {
     display: flex;
     justify-content: center;
