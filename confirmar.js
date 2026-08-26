@@ -97,8 +97,8 @@ function mostrarConfirmacion(respuesta) {
             <a href="#" class="volver-inicio" id="volver-inicio">
                 ← REGRESAR AL INICIO
             </a>
-            configurarBotonVolver();
         `;
+        configurarBotonVolver();
 
     } else {
 
@@ -121,8 +121,8 @@ function mostrarConfirmacion(respuesta) {
             <a href="#" class="volver-inicio" id="volver-inicio">
                 ← REGRESAR AL INICIO
             </a>
-            configurarBotonVolver();
         `;
+        configurarBotonVolver();
     }
 }
 
