@@ -281,14 +281,14 @@ function actualizarCuentaRegresiva() {
 
 function actualizarBotonMusica() {
     if (musica.paused) {
-        controlMusica.textContent = "▶ <i>Play</i>";
+        controlMusica.textContent = "▶ Play";
         controlMusica.setAttribute(
             "aria-label",
             "Reproducir música"
         );
         controlMusica.title = "Reproducir música";
     } else {
-        controlMusica.textContent = "▐▐ <i>Pause</i>";
+        controlMusica.textContent = "▐▐ Pause";
         controlMusica.setAttribute(
             "aria-label",
             "Pausar música"
