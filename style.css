@@ -567,11 +567,12 @@ main {
 
 .sobre {
     position: relative;
-    width: 100vw;
-    max-width: none;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: -webkit-fill-available;
 }
 
 .imagen-sobre {
