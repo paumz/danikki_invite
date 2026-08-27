@@ -312,6 +312,11 @@ function volverALaInvitacion(event) {
 /* Preparar información de confirmación */
 
 function cargarInformacionConfirmacion() {
+
+    const nombreInvitado = document.getElementById("nombre-invitado");
+    const mensajeInvitados = document.getElementById("mensaje-invitados");
+    const preguntaConfirmacion = document.querySelector("#vista-confirmacion .pregunta");
+
     if (nombre) {
         nombreInvitado.textContent = nombre;
     } else {
@@ -320,17 +325,18 @@ function cargarInformacionConfirmacion() {
 
     if (invitadosConfirmacion === 1) {
         mensajeInvitados.innerHTML = `
-            Hemos reservado <strong>1 lugar</strong> para ti.
+            Hemos reservado <strong>1 asiento</strong> para ti.
         `;
         preguntaConfirmacion.textContent =
             "¿Tendremos el placer de contar contigo?";
     } else {
         mensajeInvitados.innerHTML = `
-            Hemos reservado <strong>${invitadosConfirmacion} lugares</strong> para ustedes.
+            Hemos reservado <strong>${invitadosConfirmacion} asientos</strong> para ustedes.
         `;
         preguntaConfirmacion.textContent =
             "¿Tendremos el placer de contar con su presencia?";
     }
+
 }
 
 function registrarRespuesta(respuesta) {
