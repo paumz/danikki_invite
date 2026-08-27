@@ -575,8 +575,8 @@ main {
 }
 
 .imagen-sobre {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
     display: block;
     user-select: none;
     pointer-events: none;
@@ -584,7 +584,7 @@ main {
 
 .abrir-invitacion {
     position: absolute;
-    top: 75%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 26px;
