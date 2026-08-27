@@ -684,6 +684,7 @@ main {
 .respuesta.cargando {
     pointer-events: none;
     color: transparent;
+    background: #111;
 }
 
 .respuesta.cargando::after {
@@ -699,8 +700,8 @@ main {
 
     transform: translate(-50%, -50%);
 
-    border: 2px solid rgba(17, 17, 17, 0.25);
-    border-top-color: #111;
+    border: 2px solid rgba(245, 240, 232, 0.35);
+    border-top-color: #f5f0e8;
 
     border-radius: 50%;
 
@@ -710,28 +711,5 @@ main {
 @keyframes girarLoader {
     to {
         transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-.respuesta.cargando::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*border: 2px solid currentColor;*/
-    border: 2px solid rgba(17, 17, 17, 0.25);
-    border-top-color: #111 ;
-    /*border-right-color: transparent;*/
-    border-radius: 50%;
-    animation: girarLoader 0.7s linear infinite;
-}
-
-@media (hover: none) {
-    .respuesta.cargando:active::after {
-        border-color: rgba(245, 240, 232, 0.35);
-        border-top-color: #f5f0e8;
     }
 }
