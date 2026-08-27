@@ -728,3 +728,10 @@ main {
     border-radius: 50%;
     animation: girarLoader 0.7s linear infinite;
 }
+
+@media (hover: none) {
+    .respuesta.cargando:active::after {
+        border-color: rgba(245, 240, 232, 0.35);
+        border-top-color: #f5f0e8;
+    }
+}
