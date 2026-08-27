@@ -281,14 +281,14 @@ function actualizarCuentaRegresiva() {
 
 function actualizarBotonMusica() {
     if (musica.paused) {
-        controlMusica.textContent = "▶";
+        controlMusica.textContent = "▶ <i>Play</i>";
         controlMusica.setAttribute(
             "aria-label",
             "Reproducir música"
         );
         controlMusica.title = "Reproducir música";
     } else {
-        controlMusica.textContent = "Ⅱ";
+        controlMusica.textContent = "▐▐ <i>Pause</i>";
         controlMusica.setAttribute(
             "aria-label",
             "Pausar música"
@@ -395,8 +395,8 @@ function mostrarConfirmacion(respuesta) {
                 Te extrañaremos esa noche.
             </p>
             <p>
-                Gracias por avisarnos y por formar parte
-                de nuestra historia.
+                Gracias por formar parte de nuestra historia, 
+                aunque sea a la distancia.
             </p>
             <a href="#" class="volver-inicio" id="volver-inicio">
                 ← REGRESAR AL INICIO
