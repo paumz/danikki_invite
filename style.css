@@ -721,8 +721,10 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid currentColor;
-    border-right-color: transparent;
+    /*border: 2px solid currentColor;*/
+    border: 2px solid rgba(17, 17, 17, 0.25);
+    border-top-color: #111 ;
+    /*border-right-color: transparent;*/
     border-radius: 50%;
     animation: girarLoader 0.7s linear infinite;
 }
