@@ -163,6 +163,8 @@ if (botonVolverInicial) {
 const pantallaInicial = document.getElementById("pantalla-inicial");
 const botonAbrir = document.getElementById("abrir-invitacion");
 
+document.body.classList.add("bloquear-scroll");
+
 if (botonAbrir) {
     botonAbrir.addEventListener("click", () => {
         // Iniciar música en  la interacción owo
@@ -176,6 +178,8 @@ if (botonAbrir) {
 
         // Ocultar pantalla del sobre
         pantallaInicial.classList.add("oculta");
+        document.body.classList.remove("bloquear-scroll");
+        window.scrollTo(0, 0);
     });
 }
 
