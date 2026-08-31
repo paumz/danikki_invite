@@ -341,15 +341,50 @@ function cargarInformacionConfirmacion() {
             "¿Tendremos el placer de contar con su presencia?";
     }
 
+    const selectorConfirmados =
+    document.getElementById("cantidad-confirmados");
+
+    const textoMaximo =
+        document.getElementById("maximo-invitados");
+    
+    if (selectorConfirmados) {
+        // Limpia opciones anteriores
+        selectorConfirmados.innerHTML = `
+            <option value="" selected disabled>
+                SELECCIONAR
+            </option>
+        `;
+    
+        // Crear desde 1 hasta n
+        for (let i = 1; i <= invitadosConfirmacion; i++) {
+            const opcion = document.createElement("option");
+            opcion.value = i;
+            opcion.textContent =
+                i === 1
+                    ? "1 PERSONA"
+                    : `${i} PERSONAS`;
+            selectorConfirmados.appendChild(opcion);
+        }
+    }
+    
+    if (textoMaximo) {
+        textoMaximo.textContent =
+            invitadosConfirmacion === 1
+                ? "1 LUGAR DISPONIBLE"
+                : `${invitadosConfirmacion} LUGARES DISPONIBLES`;
+    }
+
 }
 
-function registrarRespuesta(respuesta) {
+function registrarRespuesta(respuesta,invitadosConfirmados) {
     const datos = {
         id: idInvitado,
         nombre: nombre || "Querido invitado",
         invitados: invitadosConfirmacion,
+        invitadosConfirmados: invitadosConfirmados,
         respuesta: respuesta
     };
+
 
     fetch(URL_SCRIPT, {
         method: "POST",
@@ -357,9 +392,12 @@ function registrarRespuesta(respuesta) {
     })
 
     .then(() => {
-
         console.log("Respuesta registrada");
-        mostrarConfirmacion(respuesta);
+        mostrarConfirmacion(
+            respuesta,
+            invitadosConfirmados
+        );
+
     })
 
     .catch((error) => {
@@ -367,10 +405,20 @@ function registrarRespuesta(respuesta) {
         alert(
             "Hubo un problema al registrar tu respuesta."
         );
+        /* Importante: si falla, se restaura los botones */
+        restaurarConfirmacion();
+        cargarInformacionConfirmacion();
+
     });
 }
-function mostrarConfirmacion(respuesta) {
+
+function mostrarConfirmacion(respuesta,invitadosConfirmados) {
     if (respuesta === "Sí") {
+        const textoAsistentes =
+        invitadosConfirmados === 1
+            ? "Hemos registrado la asistencia de 1 persona."
+            : `Hemos registrado la asistencia de ${invitadosConfirmados} personas.`;
+    
         vistaConfirmacion.innerHTML = `
             <h1>PAU<br>&<br>DAN</h1>
             <p class="subtitulo">
@@ -379,6 +427,9 @@ function mostrarConfirmacion(respuesta) {
             <div class="separador">✦</div>
             <p class="saludo-confirmacion">
                 Nos encantará celebrar contigo.
+            </p>
+            <p>
+                ${textoAsistentes}
             </p>
             <p>
                 Gracias por formar parte de este capítulo
@@ -424,21 +475,41 @@ function inicializarConfirmacion() {
     const botonNo = document.getElementById("confirmar-no");
     if (botonSi) {
         botonSi.addEventListener("click", () => {
+            const selector = document.getElementById("cantidad-confirmados");
+            const cantidad = Number(selector.value);
+            if (!cantidad) {
+                alert(
+                    "Por favor, selecciona cuántas personas asistirán."
+                );
+                selector.focus();
+                return;
+            }
             mostrarLoading(botonSi);
-            registrarRespuesta("Sí");
+            registrarRespuesta(
+                "Sí",
+                cantidad
+            );
         });
     }
+
     if (botonNo) {
         botonNo.addEventListener("click", () => {
             mostrarLoading(botonNo);
-            registrarRespuesta("No");
+            registrarRespuesta(
+                "No",
+                0
+            );
         });
     }
+
+
     const botonVolver = document.getElementById("volver-inicio");
     if (botonVolver) {
-        botonVolver.addEventListener("click", volverALaInvitacion);
+        botonVolver.addEventListener(
+            "click",
+            volverALaInvitacion
+        );
     }
-
 }
 
 function mostrarLoading(botonSeleccionado) {
