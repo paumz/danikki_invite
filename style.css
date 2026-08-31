@@ -548,15 +548,18 @@ main {
 
 .pantalla-inicial {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #111;
     z-index: 1000;
     transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
 .pantalla-inicial.oculta {
